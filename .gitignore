@@ -1,0 +1,9 @@
+# Ignore all dotfiles except .gitignore
+.*
+!.gitignore
+
+# Ignore bin and gen dirs
+/tutorial-libgdx-google-ads/bin
+/tutorial-libgdx-google-ads-android/bin
+/tutorial-libgdx-google-ads-android/gen
+/tutorial-libgdx-google-ads-desktop/bin
