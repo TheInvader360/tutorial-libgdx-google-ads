@@ -13,19 +13,24 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.Toast;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
-public class MainActivity extends AndroidApplication {
+public class MainActivity extends AndroidApplication implements ActionResolver {
 
-  private static final String AD_UNIT_ID = "ca-app-pub-6916351754834612/3101802628";
+  private static final String AD_UNIT_ID_BANNER = "ca-app-pub-6916351754834612/9855033027";
+  private static final String AD_UNIT_ID_INTERSTITIAL = "ca-app-pub-6916351754834612/3808499421";
   private static final String GOOGLE_PLAY_URL = "https://play.google.com/store/apps/developer?id=TheInvader360";
   protected AdView adView;
   protected View gameView;
+  private InterstitialAd interstitialAd;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -52,12 +57,25 @@ public class MainActivity extends AndroidApplication {
 
     setContentView(layout);
     startAdvertising(admobView);
+    
+    interstitialAd = new InterstitialAd(this);
+    interstitialAd.setAdUnitId(AD_UNIT_ID_INTERSTITIAL);
+    interstitialAd.setAdListener(new AdListener() {
+      @Override
+      public void onAdLoaded() {
+        Toast.makeText(getApplicationContext(), "Finished Loading Interstitial", Toast.LENGTH_SHORT).show();
+      }
+      @Override
+      public void onAdClosed() {
+        Toast.makeText(getApplicationContext(), "Closed Interstitial", Toast.LENGTH_SHORT).show();
+      }
+    });
   }
 
   private AdView createAdView() {
     adView = new AdView(this);
     adView.setAdSize(AdSize.SMART_BANNER);
-    adView.setAdUnitId(AD_UNIT_ID);
+    adView.setAdUnitId(AD_UNIT_ID_BANNER);
     adView.setId(12345); // this is an arbitrary id, allows for relative positioning in createGameView()
     RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     params.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE);
@@ -68,7 +86,7 @@ public class MainActivity extends AndroidApplication {
   }
 
   private View createGameView(AndroidApplicationConfiguration cfg) {
-    gameView = initializeForView(new AdTutorial(), cfg);
+    gameView = initializeForView(new AdTutorial(this), cfg);
     RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
     params.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
@@ -81,7 +99,27 @@ public class MainActivity extends AndroidApplication {
     AdRequest adRequest = new AdRequest.Builder().build();
     adView.loadAd(adRequest);
   }
-  
+
+  @Override
+  public void showOrLoadInterstital() {
+    try {
+      runOnUiThread(new Runnable() {
+        public void run() {
+          if (interstitialAd.isLoaded()) {
+            interstitialAd.show();
+            Toast.makeText(getApplicationContext(), "Showing Interstitial", Toast.LENGTH_SHORT).show();
+          }
+          else {
+            AdRequest interstitialRequest = new AdRequest.Builder().build();
+            interstitialAd.loadAd(interstitialRequest);
+            Toast.makeText(getApplicationContext(), "Loading Interstitial", Toast.LENGTH_SHORT).show();
+          }
+        }
+      });
+    } catch (Exception e) {
+    }
+  }
+
   @Override
   public void onResume() {
     super.onResume();
