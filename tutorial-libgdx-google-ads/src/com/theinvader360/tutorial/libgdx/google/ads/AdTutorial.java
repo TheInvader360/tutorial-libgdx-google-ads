@@ -2,7 +2,7 @@ package com.theinvader360.tutorial.libgdx.google.ads;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -55,7 +55,7 @@ public class AdTutorial implements ApplicationListener, GestureListener {
 	@Override
 	public void render() {		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
@@ -121,4 +121,9 @@ public class AdTutorial implements ApplicationListener, GestureListener {
     // TODO Auto-generated method stub
     return false;
   }
+
+	@Override
+	public void pinchStop() {
+
+	}
 }

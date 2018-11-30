@@ -1,16 +1,14 @@
 package com.theinvader360.tutorial.libgdx.google.ads;
 
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 
 public class Main {
 	public static void main(String[] args) {
-		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-		cfg.title = "tutorial-libgdx-google-ads";
-		cfg.useGL20 = false;
-		cfg.width = 480;
-		cfg.height = 320;
+		Lwjgl3ApplicationConfiguration cfg = new Lwjgl3ApplicationConfiguration();
+		cfg.setTitle("tutorial-libgdx-google-ads");
+		cfg.setWindowedMode(480,320);
 		
-		new LwjglApplication(new AdTutorial(new ActionResolverDesktop()), cfg);
+		new Lwjgl3Application(new AdTutorial(new ActionResolverDesktop()), cfg);
 	}
 }
