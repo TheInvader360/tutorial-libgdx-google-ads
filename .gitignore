@@ -6,11 +6,11 @@
 hs_err_pid*
 
 ## Robovm
-/ios/robovm-build/
+/tutorial-libgdx-google-ads-ios/robovm-build/
 
 ## GWT
-/html/war/
-/html/gwt-unitCache/
+/tutorial-libgdx-google-ads-html/war/
+/tutorial-libgdx-google-ads-html/gwt-unitCache/
 .apt_generated/
 .gwt/
 gwt-unitCache/
@@ -18,17 +18,17 @@ www-test/
 .gwt-tmp/
 
 ## Android Studio and Intellij and Android in general
-/android/libs/armeabi/
-/android/libs/armeabi-v7a/
-/android/libs/arm64-v8a/
-/android/libs/x86/
-/android/libs/x86_64/
-/android/gen/
+/tutorial-libgdx-google-ads-android/libs/armeabi/
+/tutorial-libgdx-google-ads-android/libs/armeabi-v7a/
+/tutorial-libgdx-google-ads-android/libs/arm64-v8a/
+/tutorial-libgdx-google-ads-android/libs/x86/
+/tutorial-libgdx-google-ads-android/libs/x86_64/
+/tutorial-libgdx-google-ads-android/gen/
 .idea/
 *.ipr
 *.iws
 *.iml
-/android/out/
+/tutorial-libgdx-google-ads-android/out/
 com_crashlytics_export_strings.xml
 
 ## Eclipse
@@ -36,12 +36,12 @@ com_crashlytics_export_strings.xml
 .classpath
 .project
 .metadata/
-/android/bin/
-/core/bin/
-/desktop/bin/
-/html/bin/
-/ios/bin/
-/ios-moe/bin/
+/tutorial-libgdx-google-ads-android/bin/
+/tutorial-libgdx-google-ads/bin/
+/tutorial-libgdx-google-ads-desktop/bin/
+/tutorial-libgdx-google-ads-html/bin/
+/tutorial-libgdx-google-ads-ios/bin/
+/tutorial-libgdx-google-ads-ios-moe/bin/
 *.tmp
 *.bak
 *.swp
@@ -54,44 +54,44 @@ com_crashlytics_export_strings.xml
 ## NetBeans
 
 /nbproject/private/
-/android/nbproject/private/
-/core/nbproject/private/
-/desktop/nbproject/private/
-/html/nbproject/private/
-/ios/nbproject/private/
-/ios-moe/nbproject/private/
+/tutorial-libgdx-google-ads-android/nbproject/private/
+/tutorial-libgdx-google-ads/nbproject/private/
+/tutorial-libgdx-google-ads-desktop/nbproject/private/
+/tutorial-libgdx-google-ads-html/nbproject/private/
+/tutorial-libgdx-google-ads-ios/nbproject/private/
+/tutorial-libgdx-google-ads-ios-moe/nbproject/private/
 
 /build/
-/android/build/
-/core/build/
-/desktop/build/
-/html/build/
-/ios/build/
-/ios-moe/build/
+/tutorial-libgdx-google-ads-android/build/
+/tutorial-libgdx-google-ads/build/
+/tutorial-libgdx-google-ads-desktop/build/
+/tutorial-libgdx-google-ads-html/build/
+/tutorial-libgdx-google-ads-ios/build/
+/tutorial-libgdx-google-ads-ios-moe/build/
 
 /nbbuild/
-/android/nbbuild/
-/core/nbbuild/
-/desktop/nbbuild/
-/html/nbbuild/
-/ios/nbbuild/
-/ios-moe/nbbuild/
+/tutorial-libgdx-google-ads-android/nbbuild/
+/tutorial-libgdx-google-ads/nbbuild/
+/tutorial-libgdx-google-ads-desktop/nbbuild/
+/tutorial-libgdx-google-ads-html/nbbuild/
+/tutorial-libgdx-google-ads-ios/nbbuild/
+/tutorial-libgdx-google-ads-ios-moe/nbbuild/
 
 /dist/
-/android/dist/
-/core/dist/
-/desktop/dist/
-/html/dist/
-/ios/dist/
-/ios-moe/dist/
+/tutorial-libgdx-google-ads-android/dist/
+/tutorial-libgdx-google-ads/dist/
+/tutorial-libgdx-google-ads-desktop/dist/
+/tutorial-libgdx-google-ads-html/dist/
+/tutorial-libgdx-google-ads-ios/dist/
+/tutorial-libgdx-google-ads-ios-moe/dist/
 
 /nbdist/
-/android/nbdist/
-/core/nbdist/
-/desktop/nbdist/
-/html/nbdist/
-/ios/nbdist/
-/ios-moe/nbdist/
+/tutorial-libgdx-google-ads-android/nbdist/
+/tutorial-libgdx-google-ads/nbdist/
+/tutorial-libgdx-google-ads-desktop/nbdist/
+/tutorial-libgdx-google-ads-html/nbdist/
+/tutorial-libgdx-google-ads-ios/nbdist/
+/tutorial-libgdx-google-ads-ios-moe/nbdist/
 
 nbactions.xml
 nb-configuration.xml
@@ -102,24 +102,26 @@ nb-configuration.xml
 .gradle/
 gradle-app.setting
 /build/
-/android/build/
-/core/build/
-/desktop/build/
-/html/build/
-/ios/build/
-/ios-moe/build/
+/tutorial-libgdx-google-ads-android/build/
+/tutorial-libgdx-google-ads/build/
+/tutorial-libgdx-google-ads-desktop/build/
+/tutorial-libgdx-google-ads-html/build/
+/tutorial-libgdx-google-ads-ios/build/
+/tutorial-libgdx-google-ads-ios-moe/build/
 
 ## OS Specific
 .DS_Store
 Thumbs.db
 
 ## iOS
-/ios/xcode/*.xcodeproj/*
-!/ios/xcode/*.xcodeproj/xcshareddata
-!/ios/xcode/*.xcodeproj/project.pbxproj
-/ios/xcode/native/
+/tutorial-libgdx-google-ads-ios/xcode/*.xcodeproj/*
+!/tutorial-libgdx-google-ads-ios/xcode/*.xcodeproj/xcshareddata
+!/tutorial-libgdx-google-ads-ios/xcode/*.xcodeproj/project.pbxproj
+/tutorial-libgdx-google-ads-ios/xcode/native/
+/tutorial-libgdx-google-ads-ios/IOSLauncher.app
+/tutorial-libgdx-google-ads-ios/IOSLauncher.app.dSYM
 
-/ios-moe/xcode/*.xcodeproj/*
-!/ios-moe/xcode/*.xcodeproj/xcshareddata
-!/ios-moe/xcode/*.xcodeproj/project.pbxproj
-/ios-moe/xcode/native/
+/tutorial-libgdx-google-ads-ios-moe/xcode/*.xcodeproj/*
+!/tutorial-libgdx-google-ads-ios-moe/xcode/*.xcodeproj/xcshareddata
+!/tutorial-libgdx-google-ads-ios-moe/xcode/*.xcodeproj/project.pbxproj
+/tutorial-libgdx-google-ads-ios-moe/xcode/native/
