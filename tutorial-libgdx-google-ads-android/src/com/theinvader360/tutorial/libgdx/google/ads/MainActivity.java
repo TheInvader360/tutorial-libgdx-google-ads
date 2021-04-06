@@ -14,9 +14,12 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.ads.*;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 public class MainActivity extends AndroidApplication implements ActionResolver {
 
@@ -54,19 +57,7 @@ public class MainActivity extends AndroidApplication implements ActionResolver {
 		setContentView(layout);
 		startAdvertising(admobView);
 
-		interstitialAd = new InterstitialAd(this);
-		interstitialAd.setAdUnitId(AD_UNIT_ID_INTERSTITIAL);
-		interstitialAd.setAdListener(new AdListener() {
-			@Override
-			public void onAdLoaded() {
-				Toast.makeText(getApplicationContext(), "Finished Loading Interstitial", Toast.LENGTH_SHORT).show();
-			}
-
-			@Override
-			public void onAdClosed() {
-				Toast.makeText(getApplicationContext(), "Closed Interstitial", Toast.LENGTH_SHORT).show();
-			}
-		});
+		MobileAds.initialize(this);
 	}
 
 	private AdView createAdView() {
@@ -102,12 +93,23 @@ public class MainActivity extends AndroidApplication implements ActionResolver {
 		try {
 			runOnUiThread(new Runnable() {
 				public void run() {
-					if (interstitialAd.isLoaded()) {
-						interstitialAd.show();
+					if (interstitialAd != null) {
+						interstitialAd.show(MainActivity.this);
 						Toast.makeText(getApplicationContext(), "Showing Interstitial", Toast.LENGTH_SHORT).show();
 					} else {
 						AdRequest interstitialRequest = new AdRequest.Builder().build();
-						interstitialAd.loadAd(interstitialRequest);
+						InterstitialAd.load(MainActivity.this, AD_UNIT_ID_INTERSTITIAL, interstitialRequest, new InterstitialAdLoadCallback() {
+							@Override
+							public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+								MainActivity.this.interstitialAd = interstitialAd;
+								Toast.makeText(getApplicationContext(), "Finished Loading Interstitial", Toast.LENGTH_SHORT).show();
+							}
+
+							@Override
+							public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+								Toast.makeText(getApplicationContext(), "Error Loading Interstitial", Toast.LENGTH_SHORT).show();
+							}
+						});
 						Toast.makeText(getApplicationContext(), "Loading Interstitial", Toast.LENGTH_SHORT).show();
 					}
 				}
