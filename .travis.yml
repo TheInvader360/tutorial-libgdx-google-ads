@@ -9,6 +9,9 @@ android:
   licenses:
     - 'android-sdk-license-.+'
 
+before_script:
+  - echo yes | sdkmanager "platforms;android-30" "build-tools;30.0.3"
+
 script:
   - ./gradlew build
 
