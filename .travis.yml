@@ -1,0 +1,24 @@
+language: android
+jdk:
+  - openjdk8
+android:
+  components:
+    - build-tools-30.0.3
+    - android-30
+  licenses:
+    - 'android-sdk-license-.+'
+
+before_script:
+  - echo yes | sdkmanager "platforms;android-30" "build-tools;30.0.3"
+
+script:
+  - ./gradlew build
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
